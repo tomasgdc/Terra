@@ -29,18 +29,16 @@ int Win32Application::Run(DXSample* pSample, HINSTANCE hInstance, int nCmdShow)
     windowClass.lpfnWndProc = WindowProc;
     windowClass.hInstance = hInstance;
     windowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
-    //windowClass.lpszClassName = L"DXSampleClass";
+    windowClass.lpszClassName = "DXSampleClass";
     RegisterClassEx(&windowClass);
 
     RECT windowRect = { 0, 0, static_cast<LONG>(pSample->GetWidth()), static_cast<LONG>(pSample->GetHeight()) };
     AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, FALSE);
 
     // Create the window and store a handle to it.
-    m_hwnd;
-    /*
-        CreateWindow(
+    m_hwnd = CreateWindow(
         windowClass.lpszClassName,
-        pSample->GetTitle(),
+        reinterpret_cast<LPCSTR>(pSample->GetTitle()),
         WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT,
         CW_USEDEFAULT,
@@ -50,7 +48,6 @@ int Win32Application::Run(DXSample* pSample, HINSTANCE hInstance, int nCmdShow)
         nullptr,        // We aren't using menus.
         hInstance,
         pSample);
-    */
 
     // Initialize the sample. OnInit is defined in each child-implementation of DXSample.
     pSample->OnInit();

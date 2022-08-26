@@ -17,6 +17,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.4)
 PROJECT(Terra)
 
+ADD_COMPILE_OPTIONS(/MP)
 
 # Reduce the config types to only Debug and Release
 SET(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "" FORCE)
@@ -63,6 +64,14 @@ message(STATUS "Assimp lib path:   " 		${ASSIMP_LIBRARIES})
 #message(STATUS "Freetype lib path: " 		${FREETYPE_LIBRARIES})
 #message(STATUS "Freetype include path: " 	${FREETYP_INCLUDE_DIR})
 message(STATUS "Zlib lib path: "        	${ZLIB_LIBRARIES}) 
+
+# ouput exe to bin directory
+foreach( OUTPUTCONFIG ${CMAKE_CONFIGURATION_TYPES} )
+    string( TOUPPER ${OUTPUTCONFIG} OUTPUTCONFIG )
+    set( CMAKE_RUNTIME_OUTPUT_DIRECTORY_${OUTPUTCONFIG} ${CMAKE_HOME_DIRECTORY}/Bin/${OUTPUTCONFIG} )
+endforeach( OUTPUTCONFIG CMAKE_CONFIGURATION_TYPES )
+
+ADD_LINK_OPTIONS(/SUBSYSTEM:WINDOWS)
 
 ADD_SUBDIRECTORY(Terra)
 ADD_SUBDIRECTORY(TerraRenderer)

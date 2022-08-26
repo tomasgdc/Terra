@@ -20,9 +20,14 @@ DXSample::DXSample(UINT width, UINT height, std::wstring name) :
     m_title(name),
     m_useWarpDevice(false)
 {
-    WCHAR assetsPath[512];
+    char assetsPath[512];
     GetAssetsPath(assetsPath, _countof(assetsPath));
-    m_assetsPath = assetsPath;
+
+    int size_needed = MultiByteToWideChar(CP_UTF8, 0, assetsPath, sizeof(assetsPath), NULL, 0);
+    std::wstring wstrTo(size_needed, 0);
+    MultiByteToWideChar(CP_UTF8, 0, assetsPath, sizeof(assetsPath), &wstrTo[0], size_needed);
+
+    m_assetsPath = L"../../Media/";
 
     m_aspectRatio = static_cast<float>(width) / static_cast<float>(height);
 }
