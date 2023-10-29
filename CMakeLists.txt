@@ -14,7 +14,7 @@
 ######################################################################
 
 
-CMAKE_MINIMUM_REQUIRED(VERSION 3.4)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.12)
 PROJECT(Terra)
 
 ADD_COMPILE_OPTIONS(/MP)
@@ -35,10 +35,8 @@ INCLUDE_DIRECTORIES(
 
 # Set preprocessor defines
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNOMINMAX -D_USE_MATH_DEFINES")
+set(CMAKE_CXX_STANDARD 17)
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
-#add_definitions(-std=c++14)
-#add_definitions(-std=c++0x)
-#add_definitions(-std=gnu++14)
 
 
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Lib)
