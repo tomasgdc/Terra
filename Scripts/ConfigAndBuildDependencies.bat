@@ -8,4 +8,15 @@ call cmake --build . --config Release
 call cmake --build . --config Debug
 cd ..\..\..\Scripts
 
+::Build DirectTex
+cd ../ThirdParty/directXTex
+
+mkdir build
+cd build
+cmake .. -G "Visual Studio 17 2022" -A x64
+call cmake --build . --config Release
+call cmake --build . --config Debug
+
+cd ..\..\..\Scripts
+
 timeout 2
