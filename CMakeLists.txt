@@ -58,10 +58,48 @@ include_directories(${ASSIMP_INCLUDE_DIR})
 set(ZLIB_LIB_SEARCH_PATH ${CMAKE_SOURCE_DIR}/ThirdParty/assimp/build/contrib/zlib)
 find_package(Zlib REQUIRED)
 
+#Find DirectXTK libraries
+set(DirectXTK_LIB_SEARCH_PATH ${CMAKE_SOURCE_DIR}/ThirdParty/directXTex/build/bin/CMake)
+FIND_LIBRARY(DirectXTK_LIBRARY_RELEASE
+  NAMES DirectXTK12
+  PATH_SUFFIXES "" release
+  HINTS ${DirectXTK_LIB_SEARCH_PATH}
+  PATHS
+  ~/Library/Frameworks
+  /Library/Frameworks
+  /usr/local
+  /usr
+  /sw
+  /opt/local
+  /opt/csw
+  /opt
+)
+
+FIND_LIBRARY(DirectXTK_LIBRARY_DEBUG
+  NAMES DirectXTK12
+  PATH_SUFFIXES "" debug
+  HINTS ${DirectXTK_LIB_SEARCH_PATH}
+  PATHS
+  ~/Library/Frameworks
+  /Library/Frameworks
+  /usr/local
+  /usr
+  /sw
+  /opt/local
+  /opt/csw
+  /opt
+)
+
+SET(DirectXTK_LIBRARIES
+  ${DirectXTK_LIBRARY_DEBUG}
+  ${DirectXTK_LIBRARY_RELEASE}
+)
+
 message(STATUS "Assimp lib path:   " 		${ASSIMP_LIBRARIES})
 #message(STATUS "Freetype lib path: " 		${FREETYPE_LIBRARIES})
 #message(STATUS "Freetype include path: " 	${FREETYP_INCLUDE_DIR})
 message(STATUS "Zlib lib path: "        	${ZLIB_LIBRARIES}) 
+message(STATUS "DirectXTK lib path: "       ${DirectXTK_LIBRARIES}) 
 
 # ouput exe to bin directory
 foreach( OUTPUTCONFIG ${CMAKE_CONFIGURATION_TYPES} )
