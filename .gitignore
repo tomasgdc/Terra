@@ -13,6 +13,8 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.vs
+*.vcxproj
 
 # Windows shortcuts
 *.lnk
@@ -41,6 +43,11 @@ $RECYCLE.BIN/
 
 # Directories potentially created on remote AFP share
 Bin
+Build
+CMakeFiles
+Lib
+x64
+
 ThirdParty/freetype/objs
 ThirdParty/freetype/builds/windows/visualc/x64
 ThirdParty/assimp/build
