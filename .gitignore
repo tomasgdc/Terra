@@ -44,3 +44,4 @@ Bin
 ThirdParty/freetype/objs
 ThirdParty/freetype/builds/windows/visualc/x64
 ThirdParty/assimp/build
+ThirdParty/directXTex/build
